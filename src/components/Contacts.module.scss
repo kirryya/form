@@ -1,0 +1,79 @@
+@import "src/common/styles/sass/variables";
+@import "src/common/styles/sass/mixins";
+
+
+.contactsBlock {
+  min-height: 50vh;
+  @media screen and (min-width: 1700px) {
+    min-height: 40vh;
+  }
+  background-color: $bgThirdColor;
+
+  .contactsContainer {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .addForm {
+      height: 360px;
+      width: 280px;
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+      .message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include text(('DM Sans', sans-serif), 1.2, 400, 18px);
+        color: $bgSecondColor;
+        margin-bottom: 15px;
+      }
+
+      .button {
+        margin: 0 90px 40px;
+        @include button(100px, 30px, ('DM Sans', sans-serif), 14px);
+        cursor: pointer;
+
+        &:hover {
+          background: $bgSecondColor;
+          color: $bgColor
+        }
+
+        &:active {
+          background: $bgColor;
+          color: $textColor
+        }
+      }
+
+      .buttonDisabled {
+        margin: 0 90px 40px;
+        @include button(100px, 30px, ('DM Sans', sans-serif), 14px);
+        cursor: pointer;
+      }
+    }
+
+    .messageSending {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include text(('DM Sans', sans-serif), 1.2, 700, 24px);
+      color: $bgSecondColor;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
