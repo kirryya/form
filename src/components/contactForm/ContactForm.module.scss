@@ -3,60 +3,27 @@
 
 .form {
   width: 270px;
-  height: 280px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
   box-sizing: border-box;
 
-  .nameForm {
+  .inputForm {
     border-radius: 10px;
-    height: 25px;
+    height: 30px;
     width: 270px;
     background-color: $bgColor;
     border-color: $textColor;
     color: $textColor;
     outline: 0;
-    border-width: 1.5px;
-  }
-
-  .nameFormError {
-    border-radius: 10px;
-    height: 25px;
-    width: 270px;
-    background-color: rgba(218, 113, 116, 0.78);
-    border-color: rgba(217, 48, 164, 0.9);
-    color: $bgColor;
-    outline: 0;
-    border-width: 1.5px;
-  }
-
-  .emailForm {
-    border-radius: 10px;
-    height: 25px;
-    width: 270px;
-    background-color: $bgColor;
-    border-color: $textColor;
-    color: $textColor;
-    outline: none;
-    border-width: 1.5px;
-  }
-
-  .emailFormError {
-    border-radius: 10px;
-    height: 25px;
-    width: 270px;
-    background-color: rgba(218, 113, 116, 0.78);
-    border-color: rgba(217, 48, 164, 0.9);
-    color: $bgColor;
-    outline: none;
     border-width: 1.5px;
   }
 
   .messageForm {
     border-radius: 10px;
-    height: 40px;
+    height: 50px;
     width: 270px;
     background-color: $bgColor;
     border-color: $textColor;
@@ -65,15 +32,13 @@
     border-width: 1.5px;
   }
 
-  .messageFormError {
-    border-radius: 10px;
-    height: 40px;
-    width: 270px;
-    background-color: rgba(218, 113, 116, 0.78);
-    border-color: rgba(217, 48, 164, 0.9);
-    color: $bgColor;
-    outline: 0;
-    border-width: 1.5px;
+  .labelForm{
+    @include text(('DM Sans', sans-serif), 1.2, 600, 18px);
+    color: #122c69;
+  }
+
+  .errorForm {
+    color: #61dafb;
   }
 }
 

@@ -13,5 +13,7 @@ export const formAPI = {
 export type dataFormType = {
     name: string
     email: string,
+    phone: string,
+    birth: string,
     message: string,
 }
