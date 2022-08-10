@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const instance = axios.create({
-    baseURL: "https://smtp-kirryya-server.herokuapp.com/",
+    baseURL: "https://smtp-form.herokuapp.com/",
 });
 
 export const formAPI = {

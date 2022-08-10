@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import style from "./Contacts.module.scss";
-import {dataFormType} from "../api/api";
+import {dataFormType, formAPI} from "../api/api";
 import {ContactForm} from "./contactForm/ContactForm";
 
 type ValuesType = {
@@ -42,7 +42,7 @@ export const Contact = () => {
     useEffect(() => {
         const timeOut = setTimeout(() => {
             setSend(null)
-        }, 3000)
+        }, 4000)
 
         return () => {
             clearTimeout(timeOut)
@@ -85,7 +85,7 @@ export const Contact = () => {
             setErrors({...errors, phoneError: "Required"})
             setValues({...values, phone: ""})
         } else {
-            if (!/^((\+7)+([0-9]){10})$/.test(value) )  {
+            if (!/^((\+7)+([0-9]){10})$/.test(value)) {
                 setErrors({...errors, phoneError: "Please, enter correct number"})
             } else {
                 setValues({...values, phone: value})
@@ -133,23 +133,21 @@ export const Contact = () => {
             message: values.message,
         }
         console.log(dataForm)
-        setLoading(false)
-        /* formAPI.sendMessage(dataForm)
-             .then(() => {
-                 setSend("Message has been sent")
-                 setValues({
-                  yourName: "",
-                  email: "",
-                  phone: "",
-                  birth: "",
-                  message: "",
-             })
-             .catch(() => {
-                 setSend("Message has NOT been SENT")
-             })
-             .finally(() => {
-                 setLoading(false)
-             })*/
+        formAPI.sendMessage(dataForm)
+            .then(() => {
+                setSend("Message has been sent")
+                setValues({...values, yourName: ""})
+                setValues({...values, email: ""})
+                setValues({...values, phone: ""})
+                setValues({...values, birth: ""})
+                setValues({...values, message: ""})
+            })
+            .catch(() => {
+                setSend("Message has NOT been SENT")
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }
 
     return (
