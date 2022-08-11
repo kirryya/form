@@ -27,7 +27,7 @@ export const ContactForm = (props: ContactFormPropsType) => {
             <label className={style.labelForm}>Name & Surname</label>
             <input type="text"
                    name="yourName"
-                   placeholder={"Enter your name..."}
+                   placeholder={"Enter your name & surname..."}
                    value={props.yourName}
                    className={style.inputForm}
                    onChange={props.onChangeNameHandler}
@@ -35,7 +35,7 @@ export const ContactForm = (props: ContactFormPropsType) => {
             <span> {props.yourNameError && <span className={style.errorForm}> {props.yourNameError}</span>} </span>
 
             <label className={style.labelForm}>Email</label>
-            <input type="text"  // type="text, чтобы не срабатывала браузерная валидация
+            <input type="text"  // type="text, чтобы по заданию не срабатывала браузерная валидация email
                     placeholder={"Enter your email..."}
                    value={props.email}
                    className={style.inputForm}
