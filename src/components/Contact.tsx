@@ -32,11 +32,11 @@ export const Contact = () => {
     })
 
     const [errors, setErrors] = useState<ErrorsType>({
-        yourNameError: "Required",
-        phoneError: "Required",
-        birthError: "Required",
-        emailError: "Required",
-        messageError: "Required",
+        yourNameError: " ",
+        phoneError: " ",
+        birthError: " ",
+        emailError: " ",
+        messageError: " ",
     })
 
     useEffect(() => {
@@ -86,7 +86,7 @@ export const Contact = () => {
         let content: string | string[] = e.currentTarget.value
         setValues({...values, phone: e.currentTarget.value})
         if (!content) {
-            setErrors({...errors, phoneError: "Required"})
+            setErrors({...errors, phoneError: "*Required"})
             setValues({...values, phone: ""})
         }
 
@@ -119,7 +119,7 @@ export const Contact = () => {
         const value = e.currentTarget.value
         setValues({...values, birth: value})
         if (!value.length || value.charAt(0) === ' ') {
-            setErrors({...errors, birthError: "Required"})
+            setErrors({...errors, birthError: "*Required"})
             setValues({...values, birth: ""})
         } else {
             setValues({...values, birth: value})
@@ -131,7 +131,7 @@ export const Contact = () => {
         const value = e.currentTarget.value
         setValues({...values, message: value})
         if (!value.length || value.charAt(0) === ' ') {
-            setErrors({...errors, messageError: "Required"})
+            setErrors({...errors, messageError: "*Required"})
         } else {
             if (value.length < 10 || value.length > 300) {
                 setErrors({...errors, messageError: "Message must be from 10 to 300 symbols"})
@@ -165,11 +165,11 @@ export const Contact = () => {
                     message: ""
                 })
                 setErrors({
-                    yourNameError: "Required",
-                    phoneError: "Required",
-                    birthError: "Required",
-                    emailError: "Required",
-                    messageError: "Required",
+                    yourNameError: " ",
+                    phoneError: " ",
+                    birthError: " ",
+                    emailError: " ",
+                    messageError: " ",
                 })
             })
             .catch(() => {
@@ -211,6 +211,7 @@ export const Contact = () => {
                                       onClick={onClickSendHandler}
                                       disabled={disabled}>
                                 Send</button>}
+                        <span style={{paddingBottom: "20px", marginTop: "-30px", color: "darkred"}}>* - Required</span>
                     </div>}
             </div>
         </div>
