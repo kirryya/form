@@ -26,7 +26,7 @@ export const Contact = () => {
     const [values, setValues] = useState<ValuesType>({
         yourName: "",
         email: "",
-        phone: "",
+        phone: "+7",
         birth: "",
         message: "",
     })
@@ -80,19 +80,41 @@ export const Contact = () => {
 
     const onChangePhoneHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value
-        setValues({...values, phone: value})
-        if (!value.length || value.charAt(0) === ' ') {
+        phoneFormat(e)
+    }
+
+    const phoneFormat = (e: ChangeEvent<HTMLInputElement>) => {
+        let content: string | string[] = e.currentTarget.value
+        setValues({...values, phone: e.currentTarget.value})
+        if (!content) {
             setErrors({...errors, phoneError: "Required"})
             setValues({...values, phone: ""})
-        } else {
-            if (!/^((\+7)+([0-9]){10})$/.test(value)) {
-                setErrors({...errors, phoneError: "Please, enter correct number"})
-            } else {
-                setValues({...values, phone: value})
-                setErrors({...errors, phoneError: ""})
-            }
+        }
+
+        content = Array.from(content).filter(ltr => ltr.charCodeAt(0) > 47 && ltr.charCodeAt(0) < 58)
+
+        let [countryCode, operatorCode, threeNumbers, firstTwoNumbers, secondTwoNumbers] = [
+            content[0] = '7',
+            content.slice(1, 4).join(''),
+            content.slice(4, 7).join(''),
+            content.slice(7, 9).join(''),
+            content.slice(9, 11).join(''),
+        ]
+
+        e.currentTarget.value = countryCode.length ? `+${countryCode}` : ''
+        if (operatorCode.length) e.target.value += `(${operatorCode}`
+        if (threeNumbers.length) e.target.value += `)${threeNumbers}`
+        if (firstTwoNumbers.length) e.target.value += `-${firstTwoNumbers}`
+        if (secondTwoNumbers.length) e.target.value += `-${secondTwoNumbers}`
+
+        setValues({...values, phone: e.currentTarget.value})
+        setErrors({...errors, phoneError: ""})
+
+        if (e.currentTarget.value.length < 16) {
+            setErrors({...errors, phoneError: "Please, enter correct phone"})
         }
     }
+
 
     const onChangeBirthHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.currentTarget.value
@@ -138,7 +160,7 @@ export const Contact = () => {
                 setSend("Message has been sent")
                 setValues({...values, yourName: ""})
                 setValues({...values, email: ""})
-                setValues({...values, phone: ""})
+                setValues({...values, phone: "+7"})
                 setValues({...values, birth: ""})
                 setValues({...values, message: ""})
             })

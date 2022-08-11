@@ -25,7 +25,8 @@ export const ContactForm = (props: ContactFormPropsType) => {
         <div className={style.form}>
 
             <label className={style.labelForm}>Name & Surname</label>
-            <input type="text" name="yourName"
+            <input type="text"
+                   name="yourName"
                    placeholder={"Enter your name..."}
                    value={props.yourName}
                    className={style.inputForm}
@@ -34,25 +35,25 @@ export const ContactForm = (props: ContactFormPropsType) => {
             <span> {props.yourNameError && <span className={style.errorForm}> {props.yourNameError}</span>} </span>
 
             <label className={style.labelForm}>Email</label>
-            <input name="email"
-                   placeholder={"Enter your email..."}
+            <input type="text"  // type="text, чтобы не срабатывала браузерная валидация
+                    placeholder={"Enter your email..."}
                    value={props.email}
                    className={style.inputForm}
                    onChange={props.onChangeEmailHandler}
             />
             <span> {props.emailError && <span className={style.errorForm}> {props.emailError}</span>} </span>
 
-            <label className={style.labelForm}>Phone number( +7__________)</label>
-            <input type={"tel"}
+            <label className={style.labelForm}>Phone number</label>
+            <input type="tel"
                    name="phone"
-                   placeholder={" +7_________"}
+                   placeholder={"+7(___)___-__-__"}
                    value={props.phone}
                    className={style.inputForm} onChange={props.onChangePhoneHandler}
             />
             <span> {props.phoneError && <span className={style.errorForm}>{props.phoneError}</span>} </span>
 
             <label className={style.labelForm}>Date of Birth</label>
-            <input type={"date"}
+            <input type="date"
                    name="birth"
                    placeholder={"Enter your Date of birth..."}
                    value={props.birth}
