@@ -153,7 +153,6 @@ export const Contact = () => {
             birth: values.birth,
             message: values.message,
         }
-        console.log(dataForm)
         formAPI.sendMessage(dataForm)
             .then(() => {
                 setSend("Message has been sent")
