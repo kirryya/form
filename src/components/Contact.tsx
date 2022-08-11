@@ -79,7 +79,6 @@ export const Contact = () => {
     };
 
     const onChangePhoneHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.currentTarget.value
         phoneFormat(e)
     }
 
@@ -158,11 +157,20 @@ export const Contact = () => {
         formAPI.sendMessage(dataForm)
             .then(() => {
                 setSend("Message has been sent")
-                setValues({...values, yourName: ""})
-                setValues({...values, email: ""})
-                setValues({...values, phone: "+7"})
-                setValues({...values, birth: ""})
-                setValues({...values, message: ""})
+                setValues({
+                    yourName: "",
+                    email: "",
+                    phone: "+7",
+                    birth: "",
+                    message: ""
+                })
+                setErrors({
+                    yourNameError: "Required",
+                    phoneError: "Required",
+                    birthError: "Required",
+                    emailError: "Required",
+                    messageError: "Required",
+                })
             })
             .catch(() => {
                 setSend("Message has NOT been SENT")
