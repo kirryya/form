@@ -211,7 +211,7 @@ export const Contact = () => {
                                       onClick={onClickSendHandler}
                                       disabled={disabled}>
                                 Send</button>}
-                        <span style={{paddingBottom: "20px", marginTop: "-30px", color: "darkred"}}>* - Required</span>
+                        {disabled && <span style={{paddingBottom: "20px", marginTop: "-30px", color: "darkred"}}>* - Required</span>}
                     </div>}
             </div>
         </div>
